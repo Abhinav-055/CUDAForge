@@ -1,6 +1,7 @@
 #include "cudaforge/kernels.hpp"
 #include <algorithm>
 #include <chrono>
+#include <cmath>
 #include <cstdlib>
 #include <fstream>
 #include <iomanip>
