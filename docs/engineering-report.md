@@ -13,7 +13,7 @@ The project separates CPU and CUDA interfaces and supports a CPU-only CMake conf
 | Matrix multiplication | Naive output-per-thread and shared-memory tiled kernel; bounds checks cover tails | No GPU run yet; performance/occupancy trade-offs unmeasured |
 | Inclusive scan | Quadratic naive baseline and shared-memory tiled scan with block offsets | Offset kernel sums all earlier block totals per output (quadratic in block count); no GPU run yet |
 | Error checks | CUDA API and launch checks are present; no-device CUDA test returns CTest skip (77) | Exception cleanup and runtime failure paths have not been exercised on a GPU |
-| GPU benchmark | CUDA events separately time kernels and transfers; wall clock measures end-to-end; CSV includes GPU, sizes, reps, CPU baseline, and speedup | Built and executed only on a CUDA machine; never run locally because no `nvcc`/GPU |
+| GPU benchmark | CUDA events time kernel launches; wall clock times paired synchronous H2D, D2H, and end-to-end paths; default 101 samples with warm-up; CSV includes GPU, sizes, reps, CPU baseline, and speedup | Built and executed only on a CUDA machine; never run locally because no `nvcc`/GPU |
 
 The CUDA source is actual CUDA C++, not a CPU simulation. Presence of source and the CMake target does not establish that it compiles or works on hardware.
 

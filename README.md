@@ -55,7 +55,7 @@ Or configure with `cmake -S . -B build-cuda -DENABLE_CUDA=ON -DCMAKE_BUILD_TYPE=
 
 ## Benchmarks
 
-The CPU executable `cudaforge_bench` measures CPU implementations. In a CUDA build, `cudaforge_cuda_bench [repetitions] [output.csv]` warms each kernel and reports medians for CUDA-event kernel time, H2D, D2H, and wall-clock end-to-end time, alongside a CPU parallel baseline and end-to-end speedup. CSV rows include GPU model, input size, and repetition count. Input `n` is vector length for vector/reduction/scan and matrix side length for matrix multiplication. The quadratic naive scan is only measured up to 4096 elements. GPU measurements have not been run on this development machine; the output file should be generated on the target GPU and retained with that run's environment details.
+The CPU executable `cudaforge_bench` measures CPU implementations. In a CUDA build, `cudaforge_cuda_bench [repetitions] [output.csv]` defaults to 101 timed samples (after warm-up) and reports medians for CUDA-event kernel time, wall-clock H2D and D2H copies, and wall-clock end-to-end time, alongside a CPU parallel baseline and end-to-end speedup. Transfer timing includes the host-side staging cost of synchronous copies; each H2D value measures the complete input set together. CSV rows include GPU model, input size, and repetition count. Input `n` is vector length for vector/reduction/scan and matrix side length for matrix multiplication. The quadratic naive scan is only measured up to 4096 elements. GPU measurements have not been run on this development machine; the output file should be generated on the target GPU and retained with that run's environment details.
 
 ## Profiling
 
